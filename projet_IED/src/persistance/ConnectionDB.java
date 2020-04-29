@@ -16,6 +16,7 @@ public class ConnectionDB {
 	 */
 	private static Connection connection;
  
+	//Local Connection
 	public static Connection getConnection() {
 		if (connection == null) {
 			try {
