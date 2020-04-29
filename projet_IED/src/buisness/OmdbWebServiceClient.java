@@ -12,6 +12,7 @@ public class OmdbWebServiceClient {
 
 	public static String apikey1 = "406e127";
 	public static String SEARCH_URL = "http://www.omdbapi.com/?ATTRIBUT=VALUE&apikey=APIKEY";
+	public static String SEARCH_URL2 = "http://www.omdbapi.com/?ATTRIBUT=VALUE&ATTRIBUT2=VALUE2&apikey=APIKEY";
 	
 	public static String sendGetRequest(String requestUrl) {
 		StringBuffer response = new StringBuffer();
@@ -41,17 +42,22 @@ public class OmdbWebServiceClient {
 		return response.toString();
 	}
 	
-	public static String searchMovieByAttribut(String attribut, String value, String key) {
-		String requestUrl = SEARCH_URL
+	public static String searchMovieByAttribut(String attribut,String attribut2, String value, String value2, String key) {
+		if (attribut2 == "" && value2 == "") {
+			String requestUrl = SEARCH_URL
 				.replaceAll("VALUE", value)
 				.replaceAll("ATTRIBUT", attribut)
 				.replaceAll("APIKEY", key);
-		return sendGetRequest(requestUrl);
-	}
-	
-	public static void main(String[] args) {
-		String jsonResponse = OmdbWebServiceClient.searchMovieByAttribut("s", "batman", apikey1);
-		System.out.println(jsonResponse);
-		
+			return sendGetRequest(requestUrl);
+		}
+		else {
+			String requestUrl = SEARCH_URL2
+				.replaceAll("VALUE", value)
+				.replaceAll("ATTRIBUT", attribut)
+				.replaceAll("VALUE2", value2)
+				.replaceAll("ATTRIBUT2", attribut2)
+				.replaceAll("APIKEY", key);
+			return sendGetRequest(requestUrl);
+		}
 	}
 }
