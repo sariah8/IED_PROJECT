@@ -25,7 +25,6 @@ public class Scraper {
 		    for (int j = 0; j < cols.size()-3; j++) {
 		    	
 		    	if (j==2) {
-				String x="s";	
 				}
 		    	else if (j == 3) {
 		    		String str =  cols.get(j).text(); 
