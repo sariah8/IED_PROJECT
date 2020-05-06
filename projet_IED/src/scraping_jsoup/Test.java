@@ -6,8 +6,10 @@ import java.util.ArrayList;
 
 public class Test {
 	
-	public static void main(String[] args) throws IOException {		
-		// TODO Auto-generated method stub
+	public  Test() {
+	}
+	
+	public void run_scrap() throws IOException{		
 		
 		Scraper scraper = new Scraper();
 		String basic_URL = "https://www.the-numbers.com/market";
