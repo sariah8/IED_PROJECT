@@ -11,19 +11,20 @@ import java.net.URL;
 public class OmdbWebServiceClient {
 
 	public static String apikey1 = "406e127";
-	public static String SEARCH_URL = "http://www.omdbapi.com/?ATTRIBUT=VALUE&apikey=APIKEY";
-	public static String SEARCH_URL2 = "http://www.omdbapi.com/?ATTRIBUT=VALUE&ATTRIBUT2=VALUE2&apikey=APIKEY";
-	
+	public static String SEARCH_URL = "http://www.omdbapi.com/?ATTRIBUT=VALUE&plot=full&r=xml&apikey=APIKEY";
+	public static String SEARCH_URL2 = "http://www.omdbapi.com/?ATTRIBUT=VALUE&ATTRIBUT2=VALUE2&plot=full&r=xml&apikey=APIKEY";
+
 	public static String sendGetRequest(String requestUrl) {
+		//StringBuffer response = new StringBuffer();
+		InputStream stream = null;
 		StringBuffer response = new StringBuffer();
-		
 		try {
 			URL url = new URL(requestUrl);
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("GET");
-			connection.setRequestProperty("Accept", "*/*");
-			connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-			InputStream stream = connection.getInputStream();
+			connection.setRequestProperty("Accept", "application/xml");
+			connection.setRequestProperty("Content-Type", "charset=UTF-8");
+			stream = connection.getInputStream();
 			InputStreamReader reader = new InputStreamReader(stream);
 			BufferedReader buffer = new BufferedReader(reader);
 			String line;
