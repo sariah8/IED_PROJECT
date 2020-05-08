@@ -49,15 +49,17 @@ public class OmdbWebServiceClient {
 				.replaceAll("VALUE", value)
 				.replaceAll("ATTRIBUT", attribut)
 				.replaceAll("APIKEY", key);
+			System.out.println(requestUrl);
 			return sendGetRequest(requestUrl);
 		}
 		else {
 			String requestUrl = SEARCH_URL2
-				.replaceAll("VALUE", value)
-				.replaceAll("ATTRIBUT", attribut)
 				.replaceAll("VALUE2", value2)
 				.replaceAll("ATTRIBUT2", attribut2)
+				.replaceAll("VALUE", value)
+				.replaceAll("ATTRIBUT", attribut)
 				.replaceAll("APIKEY", key);
+			System.out.println(requestUrl);
 			return sendGetRequest(requestUrl);
 		}
 	}

@@ -20,7 +20,7 @@ public class TestOmdbWebServiceClient {
 		//String xmlResponse = OmdbWebServiceClient.searchMovieByAttribut("t","","batman","", OmdbWebServiceClient.apikey1);
 		//System.out.println(xmlResponse);
 		
-		String xmlResponse2 = OmdbWebServiceClient.searchMovieByAttribut("t", "batman", "y", "1998", OmdbWebServiceClient.apikey1);
+		String xmlResponse2 = OmdbWebServiceClient.searchMovieByAttribut("t", "", "titanic", "", OmdbWebServiceClient.apikey1);
  
 		try (PrintWriter out = new PrintWriter("/src/movieOmdb.xml")) {
 		    out.println(xmlResponse2);
