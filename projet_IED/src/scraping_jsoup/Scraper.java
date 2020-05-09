@@ -28,14 +28,14 @@ public class Scraper {
 				}
 		    	else if (j == 3) {
 		    		String str =  cols.get(j).text(); 
-		    		csvWriter.append(str.replaceAll(",", "&"));
-		    		csvWriter.append(",");
+		    		csvWriter.append(str/*.replaceAll(",", "&")*/);
+		    		csvWriter.append("	");
 					csvWriter.append(genre);
 				}
 		    	else {
 		    		String str =  cols.get(j).text(); 
-		    		csvWriter.append(str.replaceAll(",", "&"));
-			    	csvWriter.append(",");
+		    		csvWriter.append(str/*.replaceAll(",", "&")*/);
+			    	csvWriter.append("	");
 				}
 			}
 		    csvWriter.append("\n");
@@ -47,11 +47,11 @@ public class Scraper {
 		FileWriter csvWriter = new FileWriter(file_name);
 		
 		csvWriter.append("rank");
-		csvWriter.append(",");
+		csvWriter.append("	");
 		csvWriter.append("title");
-		csvWriter.append(",");
+		csvWriter.append("	");
 		csvWriter.append("distributor");
-		csvWriter.append(",");
+		csvWriter.append("	");
 		csvWriter.append(genre);
 		csvWriter.append("\n");
 
