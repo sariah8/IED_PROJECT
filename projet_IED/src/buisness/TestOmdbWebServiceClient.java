@@ -17,20 +17,10 @@ import buisness.OmdbWebServiceClient;
 public class TestOmdbWebServiceClient {
 	public static void main(String[] args) throws Exception, IOException {
 
-		//String xmlResponse = OmdbWebServiceClient.searchMovieByAttribut("t","","batman","", OmdbWebServiceClient.apikey1);
-		//System.out.println(xmlResponse);
-		
-		String xmlResponse2 = OmdbWebServiceClient.searchMovieByAttribut("t", "", "titanic", "", OmdbWebServiceClient.apikey1);
- 
-		try (PrintWriter out = new PrintWriter("/src/movieOmdb.xml")) {
-		    out.println(xmlResponse2);
-		}
-		
-		//System.out.println("\nWith year = 1998 : \n"+xmlResponse2);
-		
-		String result = (String)XPathFilm.XPathGet("/src/movieOmdb.xml", "/root/movie/@plot", XPathConstants.STRING);
-		
+		ResumeRequest resumeRequest = new ResumeRequest();
+		String result = resumeRequest.ResumeRequest("Batman", null);
 		System.out.println(result);
-		
+		String result2 = resumeRequest.ResumeRequest("Batman", "1998");
+		System.out.println(result2);
 	}
 }

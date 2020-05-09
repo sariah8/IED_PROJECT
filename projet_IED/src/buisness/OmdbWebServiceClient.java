@@ -44,7 +44,7 @@ public class OmdbWebServiceClient {
 	}
 	
 	public static String searchMovieByAttribut(String attribut,String attribut2, String value, String value2, String key) {
-		if (attribut2 == "" && value2 == "") {
+		if (attribut2 == null && value2 == null) {
 			String requestUrl = SEARCH_URL
 				.replaceAll("VALUE", value)
 				.replaceAll("ATTRIBUT", attribut)
