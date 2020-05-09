@@ -16,7 +16,6 @@ import buisness.OmdbWebServiceClient;
 
 public class TestOmdbWebServiceClient {
 	public static void main(String[] args) throws Exception, IOException {
-
 		ResumeRequest resumeRequest = new ResumeRequest();
 		String result = resumeRequest.ResumeRequest("Batman", null);
 		System.out.println(result);

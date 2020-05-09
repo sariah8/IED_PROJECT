@@ -15,7 +15,6 @@ public class OmdbWebServiceClient {
 	public static String SEARCH_URL2 = "http://www.omdbapi.com/?ATTRIBUT=VALUE&ATTRIBUT2=VALUE2&plot=full&r=xml&apikey=APIKEY";
 
 	public static String sendGetRequest(String requestUrl) {
-		//StringBuffer response = new StringBuffer();
 		InputStream stream = null;
 		StringBuffer response = new StringBuffer();
 		try {
@@ -33,11 +32,9 @@ public class OmdbWebServiceClient {
 			}
 			buffer.close();
 			connection.disconnect();
-			
 		}catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return response.toString();
