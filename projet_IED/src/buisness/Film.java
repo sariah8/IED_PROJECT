@@ -11,9 +11,9 @@ public class Film {
 	private String releaseDate;
 	private String genre;
 	private String distributor;
-	private double budget;
-	private double domesticGross;
-	private double worldwideGross;
+	private String budget;
+	private String domesticGross;
+	private String worldwideGross;
 	private String realisator;
 	private String director;
 	private ArrayList<String> actors;
@@ -59,22 +59,22 @@ public class Film {
 	public void setDistributor(String distributor) {
 		this.distributor = distributor;
 	}
-	public double getBudget() {
+	public String getBudget() {
 		return budget;
 	}
-	public void setBudget(double budget) {
+	public void setBudget(String budget) {
 		this.budget = budget;
 	}
-	public double getDomesticGross() {
+	public String getDomesticGross() {
 		return domesticGross;
 	}
-	public void setDomesticGross(double domesticGross) {
+	public void setDomesticGross(String domesticGross) {
 		this.domesticGross = domesticGross;
 	}
-	public double getWorldwideGross() {
+	public String getWorldwideGross() {
 		return worldwideGross;
 	}
-	public void setWorldwideGross(double worldwideGross) {
+	public void setWorldwideGross(String worldwideGross) {
 		this.worldwideGross = worldwideGross;
 	}
 	public String getRealisator() {
