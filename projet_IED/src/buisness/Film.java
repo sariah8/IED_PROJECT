@@ -11,9 +11,9 @@ public class Film {
 	private String releaseDate;
 	private String genre;
 	private String distributor;
-	private String budget;
-	private String domesticGross;
-	private String worldwideGross;
+	private double budget;
+	private double usaGross;
+	private double worldwideGross;
 	private String realisator;
 	private String director;
 	private ArrayList<String> actors;
@@ -26,9 +26,8 @@ public class Film {
 		String genre;
 		String distributor;
 		double budget;
-		double domesticGross;
+		double usaGross;
 		double worldwideGross;
-		String realisator;
 		String director;
 		ArrayList<String> actors = new ArrayList<String>();
 		ArrayList<String> producers  = new ArrayList<String>();
@@ -59,22 +58,22 @@ public class Film {
 	public void setDistributor(String distributor) {
 		this.distributor = distributor;
 	}
-	public String getBudget() {
+	public double getBudget() {
 		return budget;
 	}
-	public void setBudget(String budget) {
+	public void setBudget(double budget) {
 		this.budget = budget;
 	}
-	public String getDomesticGross() {
-		return domesticGross;
+	public double getUsaGross() {
+		return usaGross;
 	}
-	public void setDomesticGross(String domesticGross) {
-		this.domesticGross = domesticGross;
+	public void setUsaGross(double usaGross) {
+		this.usaGross = usaGross;
 	}
-	public String getWorldwideGross() {
+	public double getWorldwideGross() {
 		return worldwideGross;
 	}
-	public void setWorldwideGross(String worldwideGross) {
+	public void setWorldwideGross(double worldwideGross) {
 		this.worldwideGross = worldwideGross;
 	}
 	public String getRealisator() {
@@ -107,13 +106,4 @@ public class Film {
 	public void setResume(String resume) {
 		this.resume = resume;
 	}
-
-	@Override
-	public String toString() {
-		return "Film [title=" + title + ", releaseDate=" + releaseDate + ", genre=" + genre + ", distributor="
-				+ distributor + ", budget=" + budget + ", domesticGross=" + domesticGross + ", worldwideGross="
-				+ worldwideGross + ", realisator=" + realisator + ", director=" + director + ", actors=" + actors
-				+ ", producers=" + producers + ", resume=" + resume + "]";
-	}
-	
 }

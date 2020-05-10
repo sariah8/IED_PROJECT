@@ -11,7 +11,7 @@ public class TestSparqlRequest {
 	public static void main(String[] args) throws Exception, IOException {
 		SparqlRequest sparqlRequest = new SparqlRequest();
 		HashMap<String,ArrayList<String>> resultSparql = new HashMap<String,ArrayList<String>>();
-		resultSparql = sparqlRequest.SparqlRequest("Ed Wood");
+		resultSparql = sparqlRequest.DbpediaRequest("X-Men: The Last Stand");
 		Film film = new Film();
 		film.setActors(resultSparql.get("actor"));
 		film.setProducers(resultSparql.get("producer"));
@@ -29,3 +29,16 @@ public class TestSparqlRequest {
 		
 	}
 }
+
+/*
+SELECT ?aname ?pname ?dname WHERE { 
+		?film rdf:type dbo:Film ; 
+		 foaf:name "X-Men: The Last Stand"@en ; 
+		 dbo:starring ?actor ; 
+		 dbo:producer ?prod ; 
+		 dbo:director ?dir . 
+		?actor foaf:name ?aname . 
+		?prod foaf:name ?pname . 
+		?dir foaf:name ?dname . 
+		}
+*/

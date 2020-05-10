@@ -14,7 +14,9 @@ import org.apache.jena.rdf.model.ResourceFactory;
 
 public class SparqlRequest {
 
-	public HashMap<String, ArrayList<String>> SparqlRequest(String titleStr) {
+	public SparqlRequest() {}
+	
+	public HashMap<String, ArrayList<String>> DbpediaRequest(String titleStr) {
 		final String resourceURI = "http://dbpedia.org/sparql";		
 		String realisatorQuery = (
 							"PREFIX owl: <http://www.w3.org/2002/07/owl#>\n" +
@@ -30,7 +32,7 @@ public class SparqlRequest {
 							"PREFIX skos: <http://www.w3.org/2004/02/skos/core#>" +
 							"PREFIX dbo: <http://dbpedia.org/ontology/>" +
 							"\n"+
-							"SELECT ?dname ?pname ?aname WHERE {\r\n" + 
+							"SELECT distinct ?dname ?pname ?aname WHERE {\r\n" + 
 							"?film rdf:type dbo:Film ;\r\n" + 
 							" foaf:name \""+titleStr+"\"@en ;\r\n" + 
 							" dbo:director ?dir ;\r\n" +
@@ -48,9 +50,9 @@ public class SparqlRequest {
 		ArrayList<String> actors = new ArrayList<String>();
 		ArrayList<String> directors = new ArrayList<String>();
 		ArrayList<String> producers = new ArrayList<String>();
-		String actor;
-		String director;
-		String producer;
+		String actor = "";
+		String director = "";
+		String producer = "";
 	//	ResultSetFormatter.out(System.out,results,query);
 		for(QuerySolution qs:solutions) {
 			actor = qs.get("aname").toString().replaceAll("@en", "");
