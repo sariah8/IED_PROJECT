@@ -1,4 +1,4 @@
-package buisness;
+package tests;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,8 +13,9 @@ import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 import buisness.OmdbWebServiceClient;
+import buisness.ResumeRequest;
 
-public class TestOmdbWebServiceClient {
+public class TestOmdbResumeRequest {
 	public static void main(String[] args) throws Exception, IOException {
 		ResumeRequest resumeRequest = new ResumeRequest();
 		String result = resumeRequest.ResumeRequest("Batman", null);
