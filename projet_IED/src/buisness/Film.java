@@ -11,9 +11,9 @@ public class Film {
 	private String releaseDate;
 	private String genre;
 	private String distributor;
-	private double budget;
-	private double usaGross;
-	private double worldwideGross;
+	private String budget;
+	private String usaGross;
+	private String worldwideGross;
 	private String realisator;
 	private String director;
 	private ArrayList<String> actors;
@@ -25,9 +25,9 @@ public class Film {
 		String releaseDate;
 		String genre;
 		String distributor;
-		double budget;
-		double usaGross;
-		double worldwideGross;
+		String budget;
+		String usaGross;
+		String worldwideGross;
 		String director;
 		ArrayList<String> actors = new ArrayList<String>();
 		ArrayList<String> producers  = new ArrayList<String>();
@@ -58,22 +58,22 @@ public class Film {
 	public void setDistributor(String distributor) {
 		this.distributor = distributor;
 	}
-	public double getBudget() {
+	public String getBudget() {
 		return budget;
 	}
-	public void setBudget(double budget) {
+	public void setBudget(String budget) {
 		this.budget = budget;
 	}
-	public double getUsaGross() {
+	public String getUsaGross() {
 		return usaGross;
 	}
-	public void setUsaGross(double usaGross) {
+	public void setUsaGross(String usaGross) {
 		this.usaGross = usaGross;
 	}
-	public double getWorldwideGross() {
+	public String getWorldwideGross() {
 		return worldwideGross;
 	}
-	public void setWorldwideGross(double worldwideGross) {
+	public void setWorldwideGross(String worldwideGross) {
 		this.worldwideGross = worldwideGross;
 	}
 	public String getRealisator() {
@@ -106,4 +106,16 @@ public class Film {
 	public void setResume(String resume) {
 		this.resume = resume;
 	}
+
+
+
+@Override
+public String toString() {
+	
+	return "[title : "+ title +   ", releaseDate : " + releaseDate + ", genre : " + genre + ", distributor : " + distributor +
+			", budget : " + budget + ", usaGross : " +  usaGross + ", worldwideGross : " + worldwideGross + "]" ;
+	
+}
+
+
 }
