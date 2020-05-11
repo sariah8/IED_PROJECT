@@ -6,7 +6,9 @@ import java.util.HashMap;
 
 import buisness.Film;
 import buisness.ResumeRequest;
-import dbpedia.SparqlRequest;
+import dbpedia.SparqlRequestActor;
+import dbpedia.SparqlRequestTitle;
+import persistance.FilmPersistance;
 
 public class Mediator {
 
@@ -14,18 +16,25 @@ public class Mediator {
 	
 	public Film FilmByTitle(String titleString){
 		Film film = new Film();
+		
 		//JDBC Request
-		
-		//En attendant :
-		film.setTitle(titleString);
-		
-		
+		FilmPersistance persistance = new FilmPersistance() ;
+		film = persistance.readFilmByTitle(titleString);	
+	
 		//Sparql Request to dbpedia
-		SparqlRequest sparqlRequest = new SparqlRequest();
+		SparqlRequestTitle sparqlRequest = new SparqlRequestTitle();
 		HashMap<String,ArrayList<String>> resultSparql = new HashMap<String,ArrayList<String>>();
-		resultSparql = sparqlRequest.DbpediaRequest(film.getTitle());
-		film.setActors(resultSparql.get("actor"));
-		film.setProducers(resultSparql.get("producer"));
+		resultSparql = sparqlRequest.DbpediaRequestTitle(film.getTitle());
+		if(!resultSparql.get("actor").isEmpty()) {
+			film.setActors(resultSparql.get("actor"));
+		}else {
+			film.setActors(null);
+		}
+		if (!resultSparql.get("producer").isEmpty()){
+			film.setProducers(resultSparql.get("producer"));
+		}else {
+			film.setProducers(null);
+		}
 		if (!resultSparql.get("director").isEmpty()){
 			film.setDirector(resultSparql.get("director").get(0));
 		}else {
@@ -47,27 +56,41 @@ public class Mediator {
 	
 	public ArrayList<Film> FilmsByActor(String actorString){
 		ArrayList<Film> films = new ArrayList<Film>();
-		//JDBC Request
+		FilmPersistance persistance = new FilmPersistance() ;
 		
+		//Sparql Request to dbpedia
+		SparqlRequestActor sparqlRequestActor = new SparqlRequestActor();
+		ArrayList<String> titlesString = new ArrayList<String>();
+		titlesString = sparqlRequestActor.DbpediaRequestActor(actorString);
+		System.out.println("DEBUG Dbpedia request result :\n"+String.join(",", titlesString));
 		
-		for(Film film : films) {
-			//Sparql Request to dbpedia
-			SparqlRequest sparqlRequest = new SparqlRequest();
-			HashMap<String,ArrayList<String>> resultSparql = new HashMap<String,ArrayList<String>>();
-			resultSparql = sparqlRequest.DbpediaRequest(film.getTitle());
-			film.setActors(resultSparql.get("actor"));
-			film.setProducers(resultSparql.get("producer"));
-			film.setDirector(resultSparql.get("director").get(0));
-		
-			//HTML GET method to Omdb
-			ResumeRequest resumeRequest = new ResumeRequest();
-			String resumeString = "";
-			try {
-				resumeString = resumeRequest.ResumeRequest(film.getTitle(), null);
-			} catch (IOException e) {
-				e.printStackTrace();
+		for(String titleString : titlesString) {
+			Film film = new Film();
+			//JDBC Request;
+			
+			film = persistance.readFilmByTitle(titleString);
+
+			if (film.getTitle() ==  null) {
+				continue;
 			}
-			film.setResume(resumeString);
+			System.out.println("DEBUG JDBC Set film find :" +film.getTitle());
+			
+			//Sparql Request to dbpedia
+			SparqlRequestTitle sparqlRequestTitle = new SparqlRequestTitle();
+			HashMap<String,ArrayList<String>> resultSparql = new HashMap<String,ArrayList<String>>();
+			resultSparql = sparqlRequestTitle.DbpediaRequestTitle(film.getTitle());
+			if (!resultSparql.get("producer").isEmpty()){
+				film.setProducers(resultSparql.get("producer"));
+			}else {
+				film.setProducers(null);
+			}
+			if (!resultSparql.get("director").isEmpty()){
+				film.setDirector(resultSparql.get("director").get(0));
+			}else {
+				film.setDirector(null);
+			}
+			
+			films.add(film);
 		}
 		return films;
 	}

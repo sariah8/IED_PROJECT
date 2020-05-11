@@ -14,7 +14,6 @@ public class Film {
 	private String budget;
 	private String usaGross;
 	private String worldwideGross;
-	private String realisator;
 	private String director;
 	private ArrayList<String> actors;
 	private ArrayList<String> producers;
@@ -76,12 +75,6 @@ public class Film {
 	public void setWorldwideGross(String worldwideGross) {
 		this.worldwideGross = worldwideGross;
 	}
-	public String getRealisator() {
-		return realisator;
-	}
-	public void setRealisator(String realisator) {
-		this.realisator = realisator;
-	}
 	public String getDirector() {
 		return director;
 	}
@@ -112,9 +105,70 @@ public class Film {
 @Override
 public String toString() {
 	
-	return "[title : "+ title +   ", releaseDate : " + releaseDate + ", genre : " + genre + ", distributor : " + distributor +
-			", budget : " + budget + ", usaGross : " +  usaGross + ", worldwideGross : " + worldwideGross + "]" ;
-	
+	return
+			//title
+			"\nTitle  :  "+ title +
+			//realseDate
+			"Realse date   :   "+releaseDate +
+			//genre
+			"Genre   :   "+genre +
+			//distributor
+			"Distributor   :   "+distributor +
+			//budget
+			"Budget   :   "+budget +
+			//usa gross
+			"Usa Gross   :   "+usaGross +
+			//worldwide gross
+			"Wordlwide Gross    :   "+worldwideGross +
+			//director
+			"Director    :   "+director +
+			//resume
+			"Resume   :   "+resume +
+			//actors
+			"Actors   :   "+String.join(", ",actors) +
+			//producers
+			"Producers   :   "+String.join(", ",producers);
+}
+
+public String toStringRequest1() {
+
+	return
+			//title
+			"\nTitle  :  "+ title +
+			//realseDate
+			"\nRealse date   :   "+releaseDate +
+			//genre
+			"\nGenre   :   "+genre +
+			//distributor
+			"\nDistributor   :   "+distributor +
+			//budget
+			"\nBudget   :   "+budget +
+			//usa gross
+			"\nUsa Gross   :   "+usaGross +
+			//worldwide gross
+			"\nWordlwide Gross    :   "+worldwideGross +
+			//director
+			"\nDirector    :   "+director +
+			//resume
+			"\nResume   :   "+resume +
+			//actors
+			"\nActors   :   "+String.join(", ",actors);
+}
+
+public String toStringRequest2() {
+	return
+			//title
+			"\nTitle  :  "+ title +
+			//realseDate
+			"\nRealse date   :   "+releaseDate +
+			//genre
+			"\nGenre   :   "+genre +
+			//distributor
+			"\nDistributor   :   "+distributor +
+			//director
+			"\nDirector    :   "+director +
+			//actors
+			"\nProducers   :   "+String.join(", ",producers);
 }
 
 

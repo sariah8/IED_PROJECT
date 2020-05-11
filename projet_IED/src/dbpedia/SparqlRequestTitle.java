@@ -12,11 +12,11 @@ import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.ResourceFactory;
 
-public class SparqlRequest {
+public class SparqlRequestTitle {
 
-	public SparqlRequest() {}
+	public SparqlRequestTitle() {}
 	
-	public HashMap<String, ArrayList<String>> DbpediaRequest(String titleStr) {
+	public HashMap<String, ArrayList<String>> DbpediaRequestTitle(String titleStr) {
 		final String resourceURI = "http://dbpedia.org/sparql";		
 		String realisatorQuery = (
 							"PREFIX owl: <http://www.w3.org/2002/07/owl#>\n" +
@@ -42,6 +42,7 @@ public class SparqlRequest {
 							"?prod foaf:name ?pname .\r\n" + 
 							"?dir foaf:name ?dname .\r\n" + 
 							"}");
+		System.out.println("DEBUG \t"+realisatorQuery);
 		Query query = QueryFactory.create(realisatorQuery);
 		QueryExecution queryExe = QueryExecutionFactory.sparqlService(resourceURI, query);
 		ResultSet results = queryExe.execSelect() ;

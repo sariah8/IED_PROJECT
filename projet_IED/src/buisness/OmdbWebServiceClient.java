@@ -47,7 +47,7 @@ public class OmdbWebServiceClient {
 				.replaceAll("VALUE", value)
 				.replaceAll("ATTRIBUT", attribut)
 				.replaceAll("APIKEY", key);
-			System.out.println(requestUrl);
+			System.out.println("DEBUG OMDB request : "+requestUrl);
 			return sendGetRequest(requestUrl);
 		}
 		else {
@@ -59,7 +59,7 @@ public class OmdbWebServiceClient {
 				.replaceAll("VALUE", value)
 				.replaceAll("ATTRIBUT", attribut)
 				.replaceAll("APIKEY", key);
-			System.out.println(requestUrl);
+			System.out.println("DEBUG OMDB request : "+requestUrl);
 			return sendGetRequest(requestUrl);
 		}
 	}

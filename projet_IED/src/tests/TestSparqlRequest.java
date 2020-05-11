@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import buisness.Film;
-import dbpedia.SparqlRequest;
+import dbpedia.SparqlRequestTitle;
 
 public class TestSparqlRequest {
 	public static void main(String[] args) throws Exception, IOException {
-		SparqlRequest sparqlRequest = new SparqlRequest();
+		SparqlRequestTitle sparqlRequest = new SparqlRequestTitle();
 		HashMap<String,ArrayList<String>> resultSparql = new HashMap<String,ArrayList<String>>();
-		resultSparql = sparqlRequest.DbpediaRequest("X-Men: The Last Stand");
+		resultSparql = sparqlRequest.DbpediaRequestTitle("X-Men: The Last Stand");
 		Film film = new Film();
 		film.setActors(resultSparql.get("actor"));
 		film.setProducers(resultSparql.get("producer"));
@@ -25,8 +25,7 @@ public class TestSparqlRequest {
 			System.out.println(producer);
 		}
 		System.out.println("Director :");
-		System.out.println(film.getDirector());
-		
+		System.out.println(film.getDirector());	
 	}
 }
 

@@ -7,11 +7,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Film_persistance {
+public class FilmPersistance {
 
 	private Connection dbConnection;
 	
-	public Film_persistance() {
+	public FilmPersistance() {
 		this.dbConnection = ConnectionDB.getConnection();
 	}
 
@@ -30,7 +30,7 @@ public class Film_persistance {
 				film.setTitle(result.getString("movie"));
 				film.setReleaseDate(result.getString("release_date"));
 				film.setBudget(result.getString("production_budget"));
-				film.setDomesticGross(result.getString("domestic_gross"));
+				film.setUsaGross(result.getString("domestic_gross"));
 				film.setWorldwideGross(result.getString("wordwide_gross"));
 			}
 			preparedStatement.close();

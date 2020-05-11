@@ -10,6 +10,9 @@ public class ResumeRequest {
 
 	public String ResumeRequest(String title, String year) throws IOException {
 		String optionalAttribut =  null;
+		if(title == null) {
+			return null;
+		}
 		if (year != null) {
 			optionalAttribut = "y";
 		}
