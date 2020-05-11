@@ -1,5 +1,4 @@
 package persistance;
-import java.util.ArrayList;
 
 import buisness.Film;
 
@@ -39,6 +38,24 @@ public class FilmPersistance {
 			System.err.println(" hoy "+se.getMessage());
 		}
 
+		try {
+			String selectFilmQuery = "SELECT * FROM scraped_movies WHERE title = ? ";
+			java.sql.PreparedStatement preparedStatement = dbConnection.prepareStatement(selectFilmQuery);
+			preparedStatement.setString(1, title);
+			ResultSet result = preparedStatement.executeQuery();
+			
+			while (result.next()) {
+				
+				/*private String genre;
+				private String distributor;*/
+				film.setGenre(result.getString("genre"));
+				film.setDistributor(result.getString("distributor"));
+			}
+			preparedStatement.close();
+
+		} catch (SQLException se) {
+			System.err.println(" hoy "+se.getMessage());
+		}
 		return film;
 	}
 

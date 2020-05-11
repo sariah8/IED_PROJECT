@@ -10,7 +10,8 @@ public class Test_BD_JDBC {
 		// TODO Auto-generated method stub
 				FilmPersistance persistance = new FilmPersistance() ;
 				Film film = persistance.readFilmByTitle("Ed Wood");					
-				System.out.print(film);
+				System.out.print(film.getBudget());
+				System.out.print(film.getDistributor());
 	}
 
 }
