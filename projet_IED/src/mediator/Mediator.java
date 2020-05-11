@@ -24,7 +24,7 @@ public class Mediator {
 		//Sparql Request to dbpedia
 		SparqlRequestTitle sparqlRequest = new SparqlRequestTitle();
 		HashMap<String,ArrayList<String>> resultSparql = new HashMap<String,ArrayList<String>>();
-		resultSparql = sparqlRequest.DbpediaRequestTitle(film.getTitle());
+		resultSparql = sparqlRequest.DbpediaRequestTitle(titleString);
 		if(!resultSparql.get("actor").isEmpty()) {
 			film.setActors(resultSparql.get("actor"));
 		}else {
@@ -45,7 +45,7 @@ public class Mediator {
 		ResumeRequest resumeRequest = new ResumeRequest();
 		String resumeString = "";
 		try {
-			resumeString = resumeRequest.ResumeRequest(film.getTitle(), null);
+			resumeString = resumeRequest.ResumeRequest(titleString, null);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -78,7 +78,7 @@ public class Mediator {
 			//Sparql Request to dbpedia
 			SparqlRequestTitle sparqlRequestTitle = new SparqlRequestTitle();
 			HashMap<String,ArrayList<String>> resultSparql = new HashMap<String,ArrayList<String>>();
-			resultSparql = sparqlRequestTitle.DbpediaRequestTitle(film.getTitle());
+			resultSparql = sparqlRequestTitle.DbpediaRequestTitle(titleString);
 			if (!resultSparql.get("producer").isEmpty()){
 				film.setProducers(resultSparql.get("producer"));
 			}else {

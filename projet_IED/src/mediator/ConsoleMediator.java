@@ -19,10 +19,6 @@ public class ConsoleMediator {
 			if(request.equals("titre")) {
 				System.out.println("Entrez le titre du film :");
 				String titleString = sc.nextLine();
-				String lastChar = titleString.substring(titleString.length() -1);
-				if(lastChar == " ") {
-					titleString = titleString.substring(titleString.length() -1);
-				}
 				Film film = new Film();
 				film = mediator.FilmByTitle(titleString);
 				if(film.getTitle().equals(null)) {
