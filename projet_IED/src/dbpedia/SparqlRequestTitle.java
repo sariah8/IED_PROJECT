@@ -70,7 +70,15 @@ public class SparqlRequestTitle {
 				directors.add(director);
 			}
 		}
-
+		if (actors.isEmpty()) {
+			actors.add("-");
+		}
+		if(directors.isEmpty()) {
+			directors.add("-");
+		}
+		if(producers.isEmpty()) {
+			producers.add("-");
+		}
 		strResults.put("actor",actors);
 		strResults.put("director", directors);
 		strResults.put("producer", producers);
